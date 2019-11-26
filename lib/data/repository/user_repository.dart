@@ -8,7 +8,7 @@ import 'package:github_client_flutter/data/source/user_source.dart';
 final userRepositoryInstance = UserRepository();
 
 class UserRepository {
-  UserSource userSource = getGitApiClient();
+  UserSource userSource = apiClient;
 
   Future<User> getMyUser(bool isCacheEnable) async {
     return userSource.getMyUser().catchError(_handleError);

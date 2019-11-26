@@ -4,14 +4,14 @@ abstract class HomeState {}
 
 class InitialState extends HomeState {}
 
-class RepositoriesLoading extends HomeState {}
+class RepositoriesLoadingState extends HomeState {}
 
-class RepositoriesNotLoaded extends HomeState {}
+class RepositoriesNotLoadedState extends HomeState {}
 
-class RepositoriesLoaded extends HomeState {
+class RepositoriesLoadedState extends HomeState {
   final List<Repository> repositories;
 
-  RepositoriesLoaded(this.repositories);
+  RepositoriesLoadedState(this.repositories);
 }
 
-class IsLoggedOut extends HomeState{}
+class IsLoggedOutState extends HomeState{}

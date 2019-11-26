@@ -41,7 +41,7 @@ class _HomeState extends State<HomeScreen> {
       body: BlocBuilder(
           bloc: _homeBloc,
           builder: (context, state) {
-            if (state is IsLoggedOut) {
+            if (state is IsLoggedOutState) {
               _openHome();
               _homeBloc.add(InitEvent());
               return Container();
@@ -51,18 +51,18 @@ class _HomeState extends State<HomeScreen> {
               return Container();
             }
 
-            if (state is RepositoriesLoading) {
+            if (state is RepositoriesLoadingState) {
               return Center(
                 child: CircularProgressIndicator(),
               );
             }
 
-            if (state is RepositoriesLoaded) {
+            if (state is RepositoriesLoadedState) {
               final repos = state.repositories;
               return _repositoriesList(repos);
             }
 
-            if (state is RepositoriesNotLoaded) {
+            if (state is RepositoriesNotLoadedState) {
               return Text("Repositories Not Loaded");
             }
 

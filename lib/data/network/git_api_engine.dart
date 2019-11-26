@@ -7,13 +7,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'git_api_engine.g.dart';
 
-GitApiClient _apiClient;
-
-GitApiClient getGitApiClient() {
-  if (_apiClient != null) return _apiClient;
-  _apiClient = GitApiClient(gitDio.dio);
-  return _apiClient;
-}
+final GitApiClient apiClient = GitApiClient(gitDio.dio);
 
 @RestApi(baseUrl: "https://api.github.com")
 abstract class GitApiClient implements UserSource {

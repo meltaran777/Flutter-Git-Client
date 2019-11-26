@@ -17,10 +17,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomeState> mapEventToState(HomeEvent event) async* {
     if (event is LogoutEvent) {
       final isLoggedOut = await authInteractor.deleteToken();
-      yield IsLoggedOut();
+      yield IsLoggedOutState();
     }
     if (event is LoadRepositoriesEvent) {
-      yield RepositoriesLoading();
+      yield RepositoriesLoadingState();
       yield* _mapFetchReposToState();
     }
   }
@@ -28,9 +28,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Stream<HomeState> _mapFetchReposToState() async* {
     try {
       final repos = await userInteractor.getMyRepositories();
-      yield RepositoriesLoaded(repos);
+      yield RepositoriesLoadedState(repos);
     } catch (_) {
-      yield RepositoriesNotLoaded();
+      yield RepositoriesNotLoadedState();
     }
   }
 
